@@ -17,8 +17,8 @@ class Obstacle {
     }
     this.x = x + 10;
     this.y = Math.floor(Math.random() * y);
-    this.height = 60;
-    this.width = 60;
+    this.height = 62;
+    this.width = 62;
   }
 
   update() {

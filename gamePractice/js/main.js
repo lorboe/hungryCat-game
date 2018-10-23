@@ -8,18 +8,22 @@ var frames = 0;
 
 var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
-// var dog = new Obstacle (ctx, "../Images/lemmling-Cartoon-dog-Laughing.png",y)
-// var food = new Obstacle (ctx,"../Images/food-meat-gumbo.png")
-// var person = new Obstacle (ctx, "../Images/pirate-baby.png")
-//var frame
+
+//array of obstacles that randomlly appear on the screen
 var randomObsArr = [];
 var obstaclesType = ["dog", "food", "person"];
 
-setInterval(function() {
+// var obstacle = 0;
+// randomObsArr.forEach(function(obstacle) {
+//   obstacle = obstacle;
+// });
+
+var interval = setInterval(function() {
   update();
   drawEverything();
 }, 1000 / 60);
 
+//updating the canvas with all the functions
 function update() {
   bg.update();
   cat.update();
@@ -27,11 +31,7 @@ function update() {
     obstacle.update();
   });
   frames++;
-  // for (var i = 0; i < randomObsArr; i++) {
-  //   randomObsArr.push(obstacles[Math.random() * obstacles.length])
-  //   randomObsArr.update()
-  // }
-  if (frames % 100 === 0) {
+  if (frames % 80 === 0) {
     console.log("Creating a new obstacle", frames);
     randomObsArr.push(
       new Obstacle(
@@ -41,22 +41,21 @@ function update() {
       )
     );
   }
+  hitDetection(cat);
+  //if (getDistance(cat.x, cat.y, obstacle.x, obstacle.y) < 0) {}
 }
-//   randomObsArr.push(obstacles[Math.random() * obstacles.length])
-// }
-// for (i = 0; i < randomObsArr.length; i++) {
-//   randomObsArr[i].x += +1;
-//   randomObsArr[i].update();
-// }
 
+//Drawing the elements on the canvas
 function drawEverything() {
   ctx.clearRect(0, 0, x, y);
   bg.draw();
-  cat.draw();
   randomObsArr.forEach(function(obstacle) {
     obstacle.draw();
   });
+  cat.draw();
 }
+
+//Moving the cat
 
 $(document).keydown(function(event) {
   event.preventDefault();
@@ -91,3 +90,40 @@ $(document).keyup(function(event) {
       break;
   }
 });
+
+//hit detection
+
+//checking collision
+// function checkCollision(a, b) {
+//   return (
+//     Math.abs(a.x - b.x) <= a.width ||
+//     (b.width && Math.abs(a.y - b.y) <= a.height) ||
+//     b.height
+//   );
+//   console.log("collision");
+// }
+
+//checking distance to detect collision
+// function getDistance(x1, y1, obstacleX, obstacleY) {
+//   distanceX = obstacleX - x1;
+//   distanceY = obstacleY - y1;
+//   return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
+// }
+
+function hitDetection(a) {
+  for (var i = 0; i < randomObsArr.length; i++) {
+    var e = randomObsArr[i];
+    if (
+      a.x < e.x + e.width &&
+      a.x + a.width > e.x &&
+      a.y < e.y + e.height &&
+      a.y + a.height > e.y
+    ) {
+      console.log("HELLO");
+    }
+  }
+}
+
+function stop() {
+  clearInterval(interval);
+}
