@@ -20,6 +20,7 @@ var interval = setInterval(function() {
 
 //updating the canvas with all the functions
 function update() {
+  console.log(randomObsArr.length)
   bg.update();
   cat.update();
   randomObsArr.forEach(function(obstacle) {
@@ -27,17 +28,19 @@ function update() {
     if(cat.didCollide(obstacle)){
       if(obstacle.type === "food"){
         score +=5
-        obstacle.isTouched === true
-        console.log("ÑAM")
+        obstacle.isTouched = true
+
       } else {
-        console.log( "MIAU")
+        // console.log( "MIAU")
       }
     }
   });
 
- var filteredArray = randomObsArr.filter(function(obstacle){      //this isn't working
-    if (obstacle.x < 0 || obstacle.isTouched === true) 
-      return false
+  randomObsArr.forEach((obj,index) => {
+    if(obj.isTouched || obj.x < 0 - obj.width){
+      randomObsArr.splice(index,1)
+    }
+
   })
 
 
