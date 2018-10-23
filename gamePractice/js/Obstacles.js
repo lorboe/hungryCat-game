@@ -19,6 +19,7 @@ class Obstacle {
     this.y = Math.floor(Math.random() * y);
     this.height = 62;
     this.width = 62;
+    this.isTouched = false;
   }
 
   update() {

@@ -5,19 +5,13 @@ var y = canvas.height;
 var dx = 5;
 var dy = 5;
 var frames = 0;
-var score = 0 
-
 var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
+var randomObsArr = []; //array of obstacles that randomlly appear on the screen
+var obstaclesType = ["dog", "food", "person"]; //possible types of obstacles that determine the image to display
+var score = 0 
 
-//array of obstacles that randomlly appear on the screen
-var randomObsArr = [];
-var obstaclesType = ["dog", "food", "person"];
 
-// var obstacle = 0;
-// randomObsArr.forEach(function(obstacle) {
-//   obstacle = obstacle;
-// });
 
 var interval = setInterval(function() {
   update();
@@ -32,16 +26,21 @@ function update() {
     obstacle.update();
     if(cat.didCollide(obstacle)){
       if(obstacle.type === "food"){
+        score +=5
+        obstacle.isTouched === true
         console.log("ÑAM")
       } else {
         console.log( "MIAU")
       }
     }
   });
-  // filter eliminar el elemento si esta fuera del canvas 
-  // randomObsArr.filter(function(){
 
-  // })
+ var filteredArray = randomObsArr.filter(function(obstacle){      //this isn't working
+    if (obstacle.x < 0 || obstacle.isTouched === true) 
+      return false
+  })
+
+
   frames++;
   if (frames % 80 === 0) {
     console.log("Creating a new obstacle", frames);
@@ -52,6 +51,8 @@ function update() {
   
 }
 
+
+
 //Drawing the elements on the canvas
 function drawEverything() {
   ctx.clearRect(0, 0, x, y);
@@ -60,10 +61,13 @@ function drawEverything() {
     obstacle.draw();
   });
   cat.draw();
+
+ctx.font = "18px comic sans";
+ctx.fillStyle = "purple";
+ctx.fillText("Score: " + score, 700, 30)
 }
 
 //Moving the cat (main player)
-
 $(document).keydown(function(event) {
   event.preventDefault();
   console.log("keydown", event.keyCode);
@@ -98,24 +102,7 @@ $(document).keyup(function(event) {
   }
 });
 
-//hit detection
-// function hitDetection(a) {
-//   for (var i = 0; i < randomObsArr.length; i++) {
-//     var e = randomObsArr[i];
-//     if ( e.type === "dog" &&
-//          a.x < e.x + e.width && a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
-//       console.log("YOU LOSE");
-//     }
-//     if ( e.type === "food" &&
-//       a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
-//       console.log("YUM");
-//     }
-//     if ( e.type === "person" &&
-//     a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
-//     console.log("YOU GOT CAUGHT");
-//   }
-//   }
-// }
+
 
 function stop() {
   clearInterval(interval);
