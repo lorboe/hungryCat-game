@@ -25,8 +25,12 @@ class Obstacle {
   update() {
     this.x -= 2.5;
 
-    if (score >= 50) {
+    if (score >= 50 < 100) {
       this.x -= 3.5
+    }
+
+    if (score >= 100) {
+      this.x -= 4.5
     }
   }
 
