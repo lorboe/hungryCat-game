@@ -5,6 +5,7 @@ var y = canvas.height;
 var dx = 5;
 var dy = 5;
 var frames = 0;
+var score = 0 
 
 var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
@@ -29,20 +30,26 @@ function update() {
   cat.update();
   randomObsArr.forEach(function(obstacle) {
     obstacle.update();
+    if(cat.didCollide(obstacle)){
+      if(obstacle.type === "food"){
+        console.log("ÑAM")
+      } else {
+        console.log( "MIAU")
+      }
+    }
   });
+  // filter eliminar el elemento si esta fuera del canvas 
+  // randomObsArr.filter(function(){
+
+  // })
   frames++;
   if (frames % 80 === 0) {
     console.log("Creating a new obstacle", frames);
     randomObsArr.push(
-      new Obstacle(
-        ctx,
-        obstaclesType[Math.floor(Math.random() * obstaclesType.length)],
-        y
-      )
+      new Obstacle(ctx, obstaclesType[Math.floor(Math.random() * obstaclesType.length)],y)
     );
   }
-  hitDetection(cat);
-  //if (getDistance(cat.x, cat.y, obstacle.x, obstacle.y) < 0) {}
+  
 }
 
 //Drawing the elements on the canvas
@@ -55,7 +62,7 @@ function drawEverything() {
   cat.draw();
 }
 
-//Moving the cat
+//Moving the cat (main player)
 
 $(document).keydown(function(event) {
   event.preventDefault();
@@ -92,41 +99,23 @@ $(document).keyup(function(event) {
 });
 
 //hit detection
-
-//checking collision
-// function checkCollision(a, b) {
-//   return (
-//     Math.abs(a.x - b.x) <= a.width ||
-//     (b.width && Math.abs(a.y - b.y) <= a.height) ||
-//     b.height
-//   );
-//   console.log("collision");
+// function hitDetection(a) {
+//   for (var i = 0; i < randomObsArr.length; i++) {
+//     var e = randomObsArr[i];
+//     if ( e.type === "dog" &&
+//          a.x < e.x + e.width && a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
+//       console.log("YOU LOSE");
+//     }
+//     if ( e.type === "food" &&
+//       a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
+//       console.log("YUM");
+//     }
+//     if ( e.type === "person" &&
+//     a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
+//     console.log("YOU GOT CAUGHT");
+//   }
+//   }
 // }
-
-//checking distance to detect collision
-// function getDistance(x1, y1, obstacleX, obstacleY) {
-//   distanceX = obstacleX - x1;
-//   distanceY = obstacleY - y1;
-//   return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
-// }
-
-function hitDetection(a) {
-  for (var i = 0; i < randomObsArr.length; i++) {
-    var e = randomObsArr[i];
-    if ( e.type === "dog" &&
-         a.x < e.x + e.width && a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
-      console.log("YOU LOSE");
-    }
-    if ( e.type === "food" &&
-      a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
-      console.log("YUM");
-    }
-    if ( e.type === "person" &&
-    a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
-    console.log("YOU GOT CAUGHT");
-  }
-  }
-}
 
 function stop() {
   clearInterval(interval);
