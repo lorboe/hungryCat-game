@@ -8,7 +8,7 @@ var frames = 0;
 var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
 var randomObsArr = []; //array of obstacles that randomlly appear on the screen
-var obstaclesType = ["dog", "food", "person"]; //possible types of obstacles that determine the image to display
+var obstaclesType = ["dog", "food", "person", "food"]; //possible types of obstacles that determine the image to display
 var score = 0 
 
 

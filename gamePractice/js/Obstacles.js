@@ -23,10 +23,17 @@ class Obstacle {
   }
 
   update() {
-    this.x -= 2;
+    this.x -= 2.5;
+
+    if (score >= 50) {
+      this.x -= 3.5
+    }
   }
 
   draw() {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
+
+
+
 }
