@@ -1,28 +1,31 @@
 class Obstacle {
-    constructor (ctx,url){
-      this.ctx = ctx,
+  constructor(ctx, type, y) {
+    (this.ctx = ctx),
       //this.type = type,
-      this.img = new Image(),
-      this.img.src = url,
-      this.x = x+10
-      this.y = Math.random() * y 
-      this.height = 70
-      this.width = 70
-  
-
+      (this.img = new Image()),
+      (this.type = type);
+    switch (this.type) {
+      case "dog":
+        this.img.src = "../Images/lemmling-Cartoon-dog-Laughing.png";
+        break;
+      case "food":
+        this.img.src = "../Images/food-meat-gumbo.png";
+        break;
+      case "person":
+        this.img.src = "../Images/pirate-baby.png";
+        break;
     }
-update (){
-this.x -= 2
+    this.x = x + 10;
+    this.y = Math.floor(Math.random() * y);
+    this.height = 60;
+    this.width = 60;
+  }
+
+  update() {
+    this.x -= 2;
+  }
+
+  draw() {
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  }
 }
-
-draw () {
-  // for (var i = 0; this.x + i * this.width < this.ctx.canvas.width; i++)  {
-  //   ctx.drawImage(this.img,this.x + i * this.width - i, 0, this.width, this.height)
- ctx.drawImage(this.img,this.x,this.y,this.width, this.height);
-//ctx.drawImage(this.img,this.x,this.y+70,this.width, this.height);
-// }
-
- }
-    
-}
-
