@@ -113,14 +113,18 @@ $(document).keyup(function(event) {
 function hitDetection(a) {
   for (var i = 0; i < randomObsArr.length; i++) {
     var e = randomObsArr[i];
-    if (
-      a.x < e.x + e.width &&
-      a.x + a.width > e.x &&
-      a.y < e.y + e.height &&
-      a.y + a.height > e.y
-    ) {
-      console.log("HELLO");
+    if ( e.type === "dog" &&
+         a.x < e.x + e.width && a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
+      console.log("YOU LOSE");
     }
+    if ( e.type === "food" &&
+      a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
+      console.log("YUM");
+    }
+    if ( e.type === "person" &&
+    a.x < e.x + e.width &&  a.x + a.width > e.x &&  a.y < e.y + e.height && a.y + a.height > e.y) {
+    console.log("YOU GOT CAUGHT");
+  }
   }
 }
 
