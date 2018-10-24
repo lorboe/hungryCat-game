@@ -7,6 +7,7 @@ canvas {
   margin-top: 30px;
   display: flex;
   align-items: center;
+  background-image: url("/Images/memphis-colorful.png")
 }
 
 nav {
@@ -36,3 +37,4 @@ nav {
   color: #89d6c3;
   text-align: center;
 }
+

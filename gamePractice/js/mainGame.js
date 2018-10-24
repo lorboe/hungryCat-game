@@ -1,16 +1,28 @@
+let paused = true;
+let refreshed = false;
+
 window.onload = function() {
 document.getElementById("start-game").onclick = function () {
+  $(function() {
+    $("canvas").show("slow");
+    $("#intructiontext").hide("slow");
+    $("#start-game").html("Pause");
+    togglePause();
+  });
   startGame();
-}
+};
 
-
-function startGame(){
-  setInterval(function() {
-    update();
-    drawEverything();
-  }, 1000 / 60);
+function startGame() {
+  if (!refreshed) {
+    toggleRefresh();
+    setInterval(function() {
+      drawEverything();
+      if (!paused) {
+        update();
+      }
+    }, 1000 / 60);
   }
-
+}
 };
 
 function stop() {
@@ -29,6 +41,7 @@ var cat = new Cat(ctx, "../Images/_cute.png");
 var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "person", "food"]; //possible types of obstacles that determine the image to display
 var score = 0 
+var lives = cat.lives
 
 
 //updating the canvas with all the functions
@@ -39,13 +52,16 @@ function update() {
   randomObsArr.forEach(function(obstacle) {
     obstacle.update();
     if(cat.didCollide(obstacle)){
+      obstacle.isTouched = true
       if(obstacle.type === "food"){
         score +=5
-        obstacle.isTouched = true
-
       } else {
-        // console.log( "MIAU")
+        lives--
+        //console.log( "MIAU")
       }
+    }
+    if(obstacle.x < 0-obstacle.width) {
+      lives--
     }
   });
 
@@ -56,7 +72,6 @@ function update() {
 
   })
 
-
   frames++;
   if (frames % 80 === 0) {
     console.log("Creating a new obstacle", frames);
@@ -64,7 +79,10 @@ function update() {
       new Obstacle(ctx, obstaclesType[Math.floor(Math.random() * obstaclesType.length)],y)
     );
   }
-  
+
+  if (lives === 0) {
+   stop()
+  }
 }
 
 
@@ -81,6 +99,11 @@ function drawEverything() {
 ctx.font = "18px comic sans";
 ctx.fillStyle = "purple";
 ctx.fillText("Score: " + score, 700, 30)
+
+ctx.font = "18px comic sans"
+ctx.fillStyle = "red";
+ctx.fillText("Lives: " + lives, 700, 60)
+
 }
 
 //Moving the cat (main player)
@@ -118,6 +141,34 @@ $(document).keyup(function(event) {
   }
 });
 
+window.addEventListener("keydown", function(e) {
+  var key = e.keyCode;
+  if (key === 80) {
+    // p key
+    togglePause();
+  }
+});
+
+function togglePause() {
+  if (!paused) {
+    paused = true;
+  } else if (paused) {
+    paused = false;
+  }
+}
+
+function toggleRefresh() {
+  if (!refreshed) {
+    refreshed = true;
+  } else if (paused) {
+    refreshed = false;
+  }
+}
+
+// function playAudio(){
+//   var audio = new Audio("files/sounds/audio" + audioType);
+//   audio.play();
+// }
 
 
 

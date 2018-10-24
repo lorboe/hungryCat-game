@@ -9,6 +9,7 @@ class Cat {
     this.width = 65;
     this.movementX = null;
     this.movementY = null;
+    this.lives = 10
   }
 
   update() {
@@ -31,13 +32,13 @@ class Cat {
   }
   didCollide(otherobj) {
     var myleft = this.x;
-    var myright = this.x + (this.width);
+    var myright = this.x + (this.width-5);
     var mytop = this.y;
-    var mybottom = this.y + (this.height);
+    var mybottom = this.y + (this.height-5);
     var otherleft = otherobj.x;
-    var otherright = otherobj.x + (otherobj.width);
+    var otherright = otherobj.x + (otherobj.width-5);
     var othertop = otherobj.y;
-    var otherbottom = otherobj.y + (otherobj.height);
+    var otherbottom = otherobj.y + (otherobj.height-5);
     var crash = true;
     if ((mybottom < othertop) ||
            (mytop > otherbottom) ||

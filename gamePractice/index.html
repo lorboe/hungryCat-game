@@ -13,7 +13,7 @@
  crossorigin="anonymous">
 <!--Own CSS-->
 <link rel="stylesheet" href="style.css">
-  <title>Game Practice 1</title>
+  <title>Hungry Cat game</title>
 </head>
 <body>
 
@@ -43,28 +43,25 @@
       </nav>
 
       <div class="container mt-3">
-          <h1 class="welcome-text">Welcome</h1>
-    <div class ="start-game-btn" data-page="home">
-      <a href="play" id="start-game" class="btn btn-lg  btn-success"> Play </a>
-      <a href="high-scores" class="btn btn-lg btn-success"> High-Scores </a>
-      <!--<a href="about" class="btn btn-lg btn-block btn-success">About </a> -->
-    </div>
-    
-    <div data-page="play">
-    <h1>Play</h1>
-    </div>
-    
-    <div data-page="high-scores">
-      <h1>High Scores</h1>
-    </div>
-    
-    <!-- <div data-page="about">
-    <h1>About</h1>
-    </div> -->
-    
-      </div>
-    <canvas width="800" height="500" ></canvas>
-  
+
+          <div class="start-game-btn" data-page="home">
+            <a href="play" id="start-game" class="btn btn-lg  btn-success"> Play </a>
+            <a href="instructions" id="instructions" class="btn btn-lg btn-success"> Instructions </a>
+
+          </div>
+      
+      
+      
+          <div id="intructiontext">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis enim, a eveniet,
+              quidem expedita, autem quasi minus voluptas tempore nostrum facere repudiandae provident iure aliquam commodi
+              accusamus aperiam ab consequatur!</p>
+          </div>
+
+      
+        </div>
+<canvas width="800" height="500"> </canvas>
+
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
