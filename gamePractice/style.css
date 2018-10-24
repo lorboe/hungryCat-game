@@ -1,3 +1,32 @@
+body {
+  background-color: #fcfefe;
+}
 canvas {
-  border: 1px solid black;
+  border: 1px solid #eef9f6;
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  background-color: #c2eae0;  
+}
+
+.btn {
+  background-color: #c2eae0;  
+  border: none;
+  width: 250px;
+  margin: 20px; 
+}
+.start-game-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-text {
+  color: #89d6c3;
+  text-align: center;
 }
