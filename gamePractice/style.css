@@ -19,12 +19,18 @@ nav {
   width: 250px;
   margin: 20px; 
 }
-.start-game-btn{
+.start-game-btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
+
+.start-game-btn .btn {
+  color:white;
+  text-decoration:none;
+}
+
 
 .welcome-text {
   color: #89d6c3;

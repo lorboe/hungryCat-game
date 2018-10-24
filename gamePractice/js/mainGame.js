@@ -1,3 +1,22 @@
+window.onload = function() {
+document.getElementById("start-game").onclick = function () {
+  startGame();
+}
+
+
+function startGame(){
+  setInterval(function() {
+    update();
+    drawEverything();
+  }, 1000 / 60);
+  }
+
+};
+
+function stop() {
+  clearInterval(interval);
+}
+
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = canvas.width;
@@ -11,12 +30,6 @@ var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "person", "food"]; //possible types of obstacles that determine the image to display
 var score = 0 
 
-
-
-var interval = setInterval(function() {
-  update();
-  drawEverything();
-}, 1000 / 60);
 
 //updating the canvas with all the functions
 function update() {
@@ -107,13 +120,7 @@ $(document).keyup(function(event) {
 
 
 
-function stop() {
-  clearInterval(interval);
-}
 
 
-function startGame() {
-  myGameArea.start();
-}
 
  

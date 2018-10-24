@@ -1,4 +1,3 @@
-//Iteration 1 goal:hide all the divs with data-page, except the selected one.
 function goToPage(link) {
  
   $("[data-page]").each(function() {
