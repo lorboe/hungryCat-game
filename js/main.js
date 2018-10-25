@@ -66,8 +66,8 @@ var y = canvas.height;
 var dx = 5;
 var dy = 5;
 var frames = 0;
-var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
-var cat = new Cat(ctx, "../Images/_cute.png");
+var bg = new Background(ctx, "../images-folder/memphis-colorful.png", 2);
+var cat = new Cat(ctx, "../images-folder/main_cat.png");
 var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
 var score = 0;
@@ -121,7 +121,7 @@ function update() {
     //creating miceon the screen
   if (score >= 10){
     miceArray.push( 
-      new Mouse(ctx,"../Images/white mouse.png")
+      new Mouse(ctx,"../images-folder/white-mouse-pic.png")
     );
   }
 

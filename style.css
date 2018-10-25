@@ -7,7 +7,7 @@ canvas {
   margin-top: 30px;
   display: flex;
   align-items: center;
-  background-image: url("/Images/static\ background\ with\ cat.png");
+  background-image: url("/images-folder/static-background-cat.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -67,7 +67,7 @@ display: flex;
   display:block;
   width: 100px;
   height: 50px;
-  margin-bottom: 10px;px;
+  margin-bottom: 10px;
 }
 
 #arrowkeys {
