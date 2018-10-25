@@ -1,6 +1,7 @@
 let paused = true;
 let refreshed = false;
 var currLife;
+let gameStopped = false
 
 window.onload = function() {
 document.getElementById("start-game").onclick = function () {
@@ -12,6 +13,8 @@ document.getElementById("start-game").onclick = function () {
   });
 
     currLife <=0 ? stopGame() : startGame();
+ 
+
 };
 
 function startGame() {
@@ -21,8 +24,7 @@ function startGame() {
       drawEverything();
       if (!paused) {
     currLife <=0 ? stopGame() : update();
-
-        // update();
+         // update();
       }
     }, 1000 / 60);
   }
@@ -46,7 +48,10 @@ function toggleRefresh() {
 }
 
 function stopGame() {
-  // clearInterval(interval);
+  gameStopped = true
+  if (gameStopped = true ) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
   return;
 }
 
@@ -113,7 +118,7 @@ function update() {
     //creating miceon the screen
   if (score >= 10){
     miceArray.push( 
-      new Mouse(ctx,"../Images/brown-mouse.png")
+      new Mouse(ctx,"../Images/white mouse.png")
     );
   }
 
@@ -123,9 +128,6 @@ function update() {
     mouse.update()
   })
 
-  // if (lives === 0) {
-  //  stopGame()
-  // }
 }
 
 
@@ -200,8 +202,6 @@ window.addEventListener("keydown", function(e) {
     togglePause();
   }
 });
-
-
 
 function playAudioHit(){
   var audio = new Audio("../audio/zapsplat_cartoon_voice_high_pitched_says_ouch_001_15792.mp3");

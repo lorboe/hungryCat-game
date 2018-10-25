@@ -7,7 +7,7 @@ class Mouse {
     this.x = Math.floor(Math.random()*x)
     this.y = Math.floor(Math.random()*y)
     this.height = 65,
-    this.width = 65;
+    this.width = 75;
     this.vibisibility = false
 
   }

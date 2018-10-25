@@ -9,7 +9,7 @@ class Cat {
     this.width = 65;
     this.movementX = null;
     this.movementY = null;
-    this.lives = 10
+    this.lives = 2
   }
 
   update() {
