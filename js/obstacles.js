@@ -34,12 +34,14 @@ class Obstacle {
     }
 
     if (score >= 100 && score < 150) {
-      this.x -= 5.8
+      this.x -= 6
     }
-    if (score >= 150) {
-      this.x -= 6.5
+    if (score >= 150 < 200) {
+      this.x -= 7
     }
-
+    if (score >= 200) {
+      this.x -= 8
+    }
   }
 
   draw() {
