@@ -16,7 +16,7 @@ class Obstacle {
         break;
     }
     this.x = x + 10;
-    this.y = Math.floor(Math.random() * y);
+    this.y = Math.floor(Math.random() * canvas.height*0.87);
     this.height = 65;
     this.width = 65;
     this.isTouched = false;

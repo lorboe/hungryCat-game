@@ -8,21 +8,15 @@ class Mouse {
     this.y = Math.floor(Math.random()*y)
     this.height = 65,
     this.width = 75;
-    this.vibisibility = false
-
   }
 
 update() {
 this.x 
 this.y 
 }
-
-  
+ 
 draw() {
   ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
-
-
-
 }
 

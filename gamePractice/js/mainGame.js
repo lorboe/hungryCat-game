@@ -59,11 +59,11 @@ function stopGame() {
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = canvas.width;
-var y = canvas.height*0.85;
+var y = canvas.height;
 var dx = 5;
 var dy = 5;
 var frames = 0;
-var bg = new Background(ctx, "../Images/static background.png", 2);
+var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
 var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
@@ -93,10 +93,10 @@ function update() {
       }
     }
     //if you miss the food you also lose a life
-    if(obstacle.x < 0-obstacle.width) {
-      lives--
-      currLife = lives
-    }
+    // if(obstacle.x < 0-obstacle.width) {
+    //   lives--
+    //   currLife = lives
+    // }
   });
 
   //obstacles are removed from the array if they leave the canvas
