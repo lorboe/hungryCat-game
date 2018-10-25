@@ -1,3 +1,4 @@
+// $("#intructiontext").collapse("show")
 $("#intructiontext").hide("slow");
 
 function goToPage(link) {
@@ -25,7 +26,8 @@ $("a").click(function(event) {
 
 $(document).ready(function() {
   $("#instructions").click(function() {
-    $("canvas").hide("slow");
+    $("canvas").collapse("hide");
+    // $("#intructiontext").collapse("show in");
     $("#intructiontext").toggle("slow");
     $("#start-game").html("Play");
   });

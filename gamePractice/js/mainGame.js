@@ -32,7 +32,7 @@ function startGame() {
 };
 
 function togglePause() {
-  if (!paused) {
+  if (!paused && !gameStopped) {
     paused = true;
   } else if (paused) {
     paused = false;
