@@ -28,7 +28,7 @@ class Cat {
   }
 
   draw() {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
   didCollide(otherobj) {
     var myleft = this.x;
