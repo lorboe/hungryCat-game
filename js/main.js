@@ -6,11 +6,15 @@ let gameStopped = false
 window.onload = function() {
 document.getElementById("start-game").onclick = function () {
   $(function() {
+    if (paused){
     $("canvas").show("slow");
     $("#intructiontext").hide("slow");
     $("#start-game").html("Pause");
     togglePause();
-  });
+  } else if (!paused){
+    $("#start-game").html("Resume");
+    togglePause();
+  }});
 
     currLife <=0 ? stopGame() : startGame();
  
