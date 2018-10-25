@@ -36,6 +36,9 @@ class Obstacle {
     if (score >= 100 && score < 150) {
       this.x -= 5.5
     }
+    if (score > 150) {
+      this.x -= 6.2
+    }
 
   }
 
