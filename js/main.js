@@ -206,17 +206,17 @@ window.addEventListener("keydown", function(e) {
 });
 
 function playAudioHit(){
-  var audio = new Audio("../audio/zapsplat_cartoon_voice_high_pitched_says_ouch_001_15792.mp3");
+  var audio = new Audio("./audio/zapsplat_cartoon_voice_high_pitched_says_ouch_001_15792.mp3");
   audio.play();
 }
 
 function PlayAudioFood() {
-  var audio = new Audio("../audio/animals_cat_meow_003.mp3");
+  var audio = new Audio("./audio/animals_cat_meow_003.mp3");
   audio.play();
 }
 
 function PlayAudioScare() {
-  var audio = new Audio("../audio/zapsplat_human_child_boy_8_english_says_go_away_16257.mp3");
+  var audio = new Audio("./audio/zapsplat_human_child_boy_8_english_says_go_away_16257.mp3");
   audio.play();
 }
 
