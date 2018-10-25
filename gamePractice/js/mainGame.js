@@ -54,8 +54,10 @@ function update() {
     if(cat.didCollide(obstacle)){
       obstacle.isTouched = true
       if(obstacle.type === "food"){
+        PlayAudioFood()
         score +=5
       } else {
+        playAudioHit()
         lives--
         //console.log( "MIAU")
       }
@@ -96,11 +98,11 @@ function drawEverything() {
   });
   cat.draw();
 
-ctx.font = "18px comic sans";
+ctx.font = "18px Gloria Hallelujah"
 ctx.fillStyle = "purple";
 ctx.fillText("Score: " + score, 700, 30)
 
-ctx.font = "18px comic sans"
+ctx.font = "18px Gloria Hallelujah"
 ctx.fillStyle = "red";
 ctx.fillText("Lives: " + lives, 700, 60)
 
@@ -165,11 +167,15 @@ function toggleRefresh() {
   }
 }
 
-// function playAudio(){
-//   var audio = new Audio("files/sounds/audio" + audioType);
-//   audio.play();
-// }
+function playAudioHit(){
+  var audio = new Audio("../audio/zapsplat_cartoon_voice_high_pitched_says_ouch_001_15792.mp3");
+  audio.play();
+}
 
+function PlayAudioFood() {
+  var audio = new Audio("../audio/animals_cat_meow_003.mp3");
+  audio.play();
+}
 
 
 

@@ -11,14 +11,14 @@ class Obstacle {
       case "food":
         this.img.src = "../Images/food-meat-gumbo.png";
         break;
-      case "person":
-        this.img.src = "../Images/pirate-baby.png";
+      case "dog2":
+        this.img.src = "../Images/DalmatianCartoonDog.png";
         break;
     }
     this.x = x + 10;
     this.y = Math.floor(Math.random() * y);
-    this.height = 62;
-    this.width = 62;
+    this.height = 65;
+    this.width = 65;
     this.isTouched = false;
   }
 
