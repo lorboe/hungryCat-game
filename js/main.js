@@ -121,7 +121,7 @@ function update() {
     //creating miceon the screen
   if (score >= 10){
     miceArray.push( 
-      new Mouse(ctx,"../images-folder/white-mouse-pic.png")
+      new Mouse(ctx,"./images-folder/white-mouse-pic.png")
     );
   }
 

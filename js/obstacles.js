@@ -6,13 +6,13 @@ class Obstacle {
       (this.type = type);
     switch (this.type) {
       case "dog":
-        this.img.src = "../images-folder/brown-dog.png";
+        this.img.src = "./images-folder/brown-dog.png";
         break;
       case "food":
-        this.img.src = "../images-folder/food-meat-gumbo.png";
+        this.img.src = "./images-folder/food-meat-gumbo.png";
         break;
       case "dog2":
-        this.img.src = "../images-folder/dalmatian-dog.png";
+        this.img.src = "./images-folder/dalmatian-dog.png";
         break;
     }
     this.x = x + 10;
