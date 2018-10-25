@@ -14,7 +14,7 @@ class Cat {
 
   update() {
     if (this.movementX) {
-      var delta = this.movementX === "right" ? 1 : -1;
+      var delta = this.movementX === "right" ? 1 : -1.5;
       this.x += delta * dx;
       if (this.x <= 0) this.x = 0;
       if (this.x + this.width > x) this.x = x - this.width;

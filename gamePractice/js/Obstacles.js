@@ -23,14 +23,14 @@ class Obstacle {
   }
 
   update() {
-    this.x -= 2.5;
+    this.x -= 3;
 
-    if (score >= 50 < 100) {
-      this.x -= 3.5
+    if (score >= 30 < 60) {
+      this.x -= 4
     }
 
-    if (score >= 100) {
-      this.x -= 4.5
+    if (score >= 60) {
+      this.x -= 5
     }
   }
 

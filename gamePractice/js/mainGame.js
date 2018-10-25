@@ -1,5 +1,6 @@
 let paused = true;
 let refreshed = false;
+var currLife;
 
 window.onload = function() {
 document.getElementById("start-game").onclick = function () {
@@ -9,7 +10,8 @@ document.getElementById("start-game").onclick = function () {
     $("#start-game").html("Pause");
     togglePause();
   });
-  startGame();
+
+    currLife <=0 ? stopGame() : startGame();
 };
 
 function startGame() {
@@ -18,30 +20,51 @@ function startGame() {
     setInterval(function() {
       drawEverything();
       if (!paused) {
-        update();
+    currLife <=0 ? stopGame() : update();
+
+        // update();
       }
     }, 1000 / 60);
   }
 }
 };
 
-function stop() {
-  clearInterval(interval);
+function togglePause() {
+  if (!paused) {
+    paused = true;
+  } else if (paused) {
+    paused = false;
+  }
 }
 
+function toggleRefresh() {
+  if (!refreshed) {
+    refreshed = true;
+  } else if (paused) {
+    refreshed = false;
+  }
+}
+
+function stopGame() {
+  // clearInterval(interval);
+  return;
+}
+
+//Game variables 
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = canvas.width;
-var y = canvas.height;
+var y = canvas.height*0.85;
 var dx = 5;
 var dy = 5;
 var frames = 0;
 var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
 var randomObsArr = []; //array of obstacles that randomlly appear on the screen
-var obstaclesType = ["dog", "food", "person", "food"]; //possible types of obstacles that determine the image to display
-var score = 0 
-var lives = cat.lives
+var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
+var score = 0;
+var lives = cat.lives;
+var mouse = new Mouse(ctx,"../Images/brown-mouse.png");
 
 
 //updating the canvas with all the functions
@@ -49,6 +72,7 @@ function update() {
   console.log(randomObsArr.length)
   bg.update();
   cat.update();
+  mouse.update();
   randomObsArr.forEach(function(obstacle) {
     obstacle.update();
     if(cat.didCollide(obstacle)){
@@ -59,11 +83,15 @@ function update() {
       } else {
         playAudioHit()
         lives--
+        currLife = lives
         //console.log( "MIAU")
+//  
       }
     }
     if(obstacle.x < 0-obstacle.width) {
       lives--
+      currLife = lives
+   
     }
   });
 
@@ -81,10 +109,10 @@ function update() {
       new Obstacle(ctx, obstaclesType[Math.floor(Math.random() * obstaclesType.length)],y)
     );
   }
-
-  if (lives === 0) {
-   stop()
-  }
+  // mouse.update()
+  // if (lives === 0) {
+  //  stopGame()
+  // }
 }
 
 
@@ -97,6 +125,8 @@ function drawEverything() {
     obstacle.draw();
   });
   cat.draw();
+  mouse.draw()
+  
 
 ctx.font = "18px Gloria Hallelujah"
 ctx.fillStyle = "purple";
@@ -151,21 +181,7 @@ window.addEventListener("keydown", function(e) {
   }
 });
 
-function togglePause() {
-  if (!paused) {
-    paused = true;
-  } else if (paused) {
-    paused = false;
-  }
-}
 
-function toggleRefresh() {
-  if (!refreshed) {
-    refreshed = true;
-  } else if (paused) {
-    refreshed = false;
-  }
-}
 
 function playAudioHit(){
   var audio = new Audio("../audio/zapsplat_cartoon_voice_high_pitched_says_ouch_001_15792.mp3");
