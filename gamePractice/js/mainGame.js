@@ -63,7 +63,7 @@ var y = canvas.height*0.85;
 var dx = 5;
 var dy = 5;
 var frames = 0;
-var bg = new Background(ctx, "../Images/memphis-colorful.png", 2);
+var bg = new Background(ctx, "../Images/static background.png", 2);
 var cat = new Cat(ctx, "../Images/_cute.png");
 var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
@@ -131,8 +131,6 @@ function update() {
 }
 
 
-
-
 //Drawing the elements on the canvas
 function drawEverything() {
   ctx.clearRect(0, 0, x, y);
@@ -176,6 +174,7 @@ $(document).keydown(function(event) {
       break;
     case 32:
       miceArray = [];
+      PlayAudioScare()
       break;  
   }
 });
@@ -210,6 +209,11 @@ function playAudioHit(){
 
 function PlayAudioFood() {
   var audio = new Audio("../audio/animals_cat_meow_003.mp3");
+  audio.play();
+}
+
+function PlayAudioScare() {
+  var audio = new Audio("../audio/zapsplat_human_child_boy_8_english_says_go_away_16257.mp3");
   audio.play();
 }
 

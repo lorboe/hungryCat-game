@@ -9,12 +9,12 @@ class Cat {
     this.width = 65;
     this.movementX = null;
     this.movementY = null;
-    this.lives = 2
+    this.lives = 9
   }
 
   update() {
     if (this.movementX) {
-      var delta = this.movementX === "right" ? 1 : -1.5;
+      var delta = this.movementX === "right" ? 1 : -1.8;
       this.x += delta * dx;
       if (this.x <= 0) this.x = 0;
       if (this.x + this.width > x) this.x = x - this.width;
