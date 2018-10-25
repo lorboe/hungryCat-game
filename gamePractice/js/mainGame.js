@@ -64,15 +64,16 @@ var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
 var score = 0;
 var lives = cat.lives;
-var mouse = new Mouse(ctx,"../Images/brown-mouse.png");
-
+//var mouse = new Mouse(ctx,"../Images/brown-mouse.png");
+var miceArray = []
 
 //updating the canvas with all the functions
 function update() {
-  console.log(randomObsArr.length)
+  //console.log(randomObsArr.length)
   bg.update();
   cat.update();
-  mouse.update();
+  //mouse.update();
+  //obstacles appear on the screen and collision with the cat is checked
   randomObsArr.forEach(function(obstacle) {
     obstacle.update();
     if(cat.didCollide(obstacle)){
@@ -85,16 +86,16 @@ function update() {
         lives--
         currLife = lives
         //console.log( "MIAU")
-//  
       }
     }
+    //if you miss the food you also lose a life
     if(obstacle.x < 0-obstacle.width) {
       lives--
       currLife = lives
-   
     }
   });
 
+  //obstacles are removed from the array if they leave the canvas
   randomObsArr.forEach((obj,index) => {
     if(obj.isTouched || obj.x < 0 - obj.width){
       randomObsArr.splice(index,1)
@@ -102,18 +103,32 @@ function update() {
 
   })
 
+
+//filling the obstacles and mice array
   frames++;
   if (frames % 80 === 0) {
-    console.log("Creating a new obstacle", frames);
+    //console.log("Creating a new obstacle", frames);
     randomObsArr.push(
       new Obstacle(ctx, obstaclesType[Math.floor(Math.random() * obstaclesType.length)],y)
     );
+    //creating miceon the screen
+  if (score >= 30){
+    miceArray.push( 
+      new Mouse(ctx,"../Images/brown-mouse.png")
+    );
   }
-  // mouse.update()
+
+  }
+  //updating the mice
+  miceArray.forEach(function(mouse) {
+    mouse.update()
+  })
+
   // if (lives === 0) {
   //  stopGame()
   // }
 }
+
 
 
 
@@ -125,7 +140,10 @@ function drawEverything() {
     obstacle.draw();
   });
   cat.draw();
-  mouse.draw()
+  miceArray.forEach(function(mouse) {
+    mouse.draw();
+  });
+ 
   
 
 ctx.font = "18px Gloria Hallelujah"
