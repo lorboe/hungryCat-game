@@ -64,7 +64,6 @@ var randomObsArr = []; //array of obstacles that randomlly appear on the screen
 var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
 var score = 0;
 var lives = cat.lives;
-//var mouse = new Mouse(ctx,"../Images/brown-mouse.png");
 var miceArray = []
 
 //updating the canvas with all the functions
@@ -112,7 +111,7 @@ function update() {
       new Obstacle(ctx, obstaclesType[Math.floor(Math.random() * obstaclesType.length)],y)
     );
     //creating miceon the screen
-  if (score >= 30){
+  if (score >= 10){
     miceArray.push( 
       new Mouse(ctx,"../Images/brown-mouse.png")
     );
@@ -173,6 +172,9 @@ $(document).keydown(function(event) {
     case 40:
       cat.movementY = "down";
       break;
+    case 32:
+      miceArray = [];
+      break;  
   }
 });
 
