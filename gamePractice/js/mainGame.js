@@ -51,6 +51,9 @@ function stopGame() {
   gameStopped = true
   if (gameStopped = true ) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // PlayAudioEnd()
+    gameStopped = false
+
   }
   return;
 }
@@ -217,7 +220,8 @@ function PlayAudioScare() {
   audio.play();
 }
 
+// function PlayAudioEnd() {
+//   var audio = new Audio ("../audio/Cat Meowing-SoundBible.com-781322082.wav")
+//   audio.play()
+// }
 
-
-
- 

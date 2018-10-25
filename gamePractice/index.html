@@ -48,26 +48,47 @@
 
           <div class="start-game-btn" data-page="home">
             <a href="play" id="start-game" class="btn btn-lg"> Play </a>
-            <a href="instructions" id="instructions" class="btn btn-l"> Instructions </a>
+            <a href="instructions" id="instructions" class="btn btn-lg"> Instructions </a>
 
           </div>
       
       
       
           <div id="intructiontext">
-            <p>The goal of the game is to have the highest score possible</p>
-            <p>Eat food bowls to increase your score! The more poits you get, the hardest it will be!
-              You can chase the food by moving up, down, left and right using the arrow keys of your keyboard. 
+           <div class="goal">
+            <p>The goal of the game is to reach the highest possible score by feeding your cat.</p>
+            <img class="gameCharacter" src="Images/_cute.png" alt="cat">
+            <img class="gameCharacter" src="Images/food-meat-gumbo.png" alt="food">
+
+          </div>
+          <div class="game-dynamics">
+
+            <p>Eat food bowls to increase your score! The more poits you get, the hardest     it will be!
               But be careful, there will be enemies coming towards you, too</p>
-            <p>You will start the game with 9 lives. Each time you miss a food bowl or you touch an enemy you'll lose a life.
-              Once you run out of lives, it'll be game over.  </p>
+
+              <img class="gameCharacter" src="Images/DalmatianCartoonDog.png" alt="dog">
+              <img class="gameCharacter" src="Images/lemmling-Cartoon-dog-Laughing.png" alt="dog">
+    
+            <p>You can use the arrow keys in your keyboard to move the cat across the screen.
+              Make sure to chase the food bowls, as this is how you will get your points.  However, be careful not to touch any dog or else you'll lose one of your nine lives!
+              <img id="arrowkeys" src="Images/arrow-keys-vectors.jpg" alt="arrow-keys">
+            </p>  
+
+            <p>Finally, you will also see mice on the screen. Mice are harmless, but they will not go away until you tell them to. Press the spacebar of your keyboard to shoo them away </p>
+            <img class="gameCharacter" src="Images/white mouse.png" alt="mouse">
+            <img id="spacebar" src="Images/space_key_s.png" alt="spacebar">
+
+            <p>Have fun!</p>
+         </div>
           </div>
 
       
         </div>
 <canvas width="800" height="500"> </canvas>
 
+<!-- <div id="high-scores">
 
+</div> -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   crossorigin="anonymous"></script>

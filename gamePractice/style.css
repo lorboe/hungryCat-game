@@ -10,7 +10,7 @@ canvas {
   background-image: url("/Images/static\ background\ with\ cat.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 nav {
@@ -41,3 +41,38 @@ nav {
   text-align: center;
 }
 
+#intructiontext {
+display: flex;
+ align-items: center;
+ flex-wrap: wrap;
+ justify-content: center;
+ align-items: center;
+}
+
+#intructiontext div{
+  color: #79d1bb;
+  width: 800px;
+  justify-content: center;
+
+  
+}
+.gameCharacter {
+  height: 65px;
+  width: 65px;
+  text-align:center;
+  margin: 10px;
+}
+
+#spacebar {
+  display:block;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 10px;px;
+}
+
+#arrowkeys {
+  width: 120px;
+  height: 80px;
+  display:block;
+  margin: 7px;
+}
