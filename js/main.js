@@ -19,10 +19,16 @@ var miceArray = [];
 var startInterval
 
 window.onload = function() {
-  startInterval = setInterval(() =>{
+  startInterval = setInterval(() =>{ 
     bg.update()
     bg.draw()
-  },1000/50
+   ctx.fillStyle = "black";
+   ctx.font = "40px Gloria Hallelujah";
+   ctx.fillText("Feed Me!", 310, 100);
+   ctx.fillStyle = "black";
+   ctx.font = "40px Gloria Hallelujah";
+   ctx.fillText("Meow! Meow!", 270, 400);
+  },1000/60
   )
 
 document.getElementById("start-game").onclick = function () {
@@ -81,6 +87,7 @@ function toggleRefresh() {
 
 function stopGame() {
  clearInterval(startGameInterval)
+ gameStopped = true
   bg.draw()
   var img = new Image();
   img.onload = function() {

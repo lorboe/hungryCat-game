@@ -30,6 +30,9 @@ $(document).ready(function() {
         $("#start-game").html("Resume");
         togglePause();
       }
+      // if (gameStopped) {
+      //   $("#start-game").html("Play again");
+      // }
     $("canvas").collapse("hide");
     // $("#intructiontext").collapse("show in");
     $("#intructiontext").toggle("slow");
