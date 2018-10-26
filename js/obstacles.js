@@ -27,26 +27,6 @@ class Obstacle {
     if(score % 25 === 0){
       this.x--
     }
-
-    // if (score >= 25 && score < 50) {
-    //   this.x -= 4
-    // }
-
-    // if (score >= 50 && score < 90) {
-    //   this.x -= 5
-    // }
-
-    // if (score >= 90 && score < 150) {
-    //   this.x -= 6
-    // }
-
-    // if (score >= 150 < 200) {
-    //   this.x -= 7
-    // }
-
-    // if (score >= 200) {
-    //   this.x -= 8
-    // }
   }
 
   draw() {

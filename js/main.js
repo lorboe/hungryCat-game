@@ -1,9 +1,7 @@
 let paused = true;
 let refreshed = false;
 var currLife;
-let gameStopped = false
-
-//Game variables 
+var gameStopped = false;
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = canvas.width;
@@ -39,19 +37,26 @@ clearInterval(startInterval)
     $("#start-game").html("Resume");
     togglePause();
   }
-    currLife <=0 ? stopGame() : startGame();
- 
+    if (currLife <= 0){
+    gameStopped = true 
+    stopGame() 
+     console.log("stopping game")
+     
+    }
+      else {startGame()};
+  }
 
-};
+;
 
 function startGame() {
   if (!refreshed) {
     toggleRefresh();
-    setInterval(function() {
+    startGameInterval = setInterval(function() {
       drawEverything();
       if (!paused) {
-    currLife <=0 ? stopGame() : update();
-         // update();
+    if(currLife <=0){
+       stopGame() //: update();
+      }  else { update() };
       }
     }, 1000 / 60);
   }
@@ -75,19 +80,29 @@ function toggleRefresh() {
 }
 
 function stopGame() {
-  gameStopped = true
-  if (gameStopped = true ) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // PlayAudioEnd()
-    gameStopped = false
+ clearInterval(startGameInterval)
+  bg.draw()
+  var img = new Image();
+  img.onload = function() {
+    ctx.drawImage(img, 300, 150, 200, 200);
+  };
+   img.src ="./images-folder/angel-cat.png";
+   ctx.fillStyle = "black"
+   ctx.font = "40px Gloria Hallelujah";
+   ctx.fillText("Meow!", 200, 100);
+   setTimeout(function()
+   { PlayAudioEnd()}, 1000); 
+
+    return
 
   }
-  return;
-}
-
 
 //updating the canvas with all the functions
 function update() {
+if (gameStopped) {
+  return
+}
+  
   //console.log(randomObsArr.length)
   bg.update();
   cat.update();
@@ -232,8 +247,8 @@ function PlayAudioScare() {
   audio.play();
 }
 
-// function PlayAudioEnd() {
-//   var audio = new Audio ("../audio/Cat Meowing-SoundBible.com-781322082.wav")
-//   audio.play()
-// }
+function PlayAudioEnd() {
+  var audio = new Audio ("./audio/cat-meowing-soundBible.com-781322082.wav")
+  audio.play()
+}
 
