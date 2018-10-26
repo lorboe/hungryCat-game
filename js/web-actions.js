@@ -26,6 +26,10 @@ $("a").click(function(event) {
 
 $(document).ready(function() {
   $("#instructions").click(function() {
+      if(!paused){
+        $("#start-game").html("Resume");
+        togglePause();
+      }
     $("canvas").collapse("hide");
     // $("#intructiontext").collapse("show in");
     $("#intructiontext").toggle("slow");

@@ -3,19 +3,42 @@ let refreshed = false;
 var currLife;
 let gameStopped = false
 
+//Game variables 
+var canvas = document.querySelector("canvas");
+var ctx = canvas.getContext("2d");
+var x = canvas.width;
+var y = canvas.height;
+var dx = 5;
+var dy = 5;
+var frames = 0;
+var bg = new Background(ctx, "./images-folder/memphis-colorful.png", 2);
+var cat = new Cat(ctx, "./images-folder/main-cat.png");
+var randomObsArr = []; //array of obstacles that randomlly appear on the screen
+var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
+var score = 0;
+var lives = cat.lives;
+var miceArray = [];
+var startInterval
+
 window.onload = function() {
+  startInterval = setInterval(() =>{
+    bg.update()
+    bg.draw()
+  },1000/50
+  )
+
 document.getElementById("start-game").onclick = function () {
-  $(function() {
+clearInterval(startInterval)
     if (paused){
     $("canvas").show("slow");
+    $(".starting-page").hide();
     $("#intructiontext").hide("slow");
     $("#start-game").html("Pause");
     togglePause();
   } else if (!paused){
     $("#start-game").html("Resume");
     togglePause();
-  }});
-
+  }
     currLife <=0 ? stopGame() : startGame();
  
 
@@ -62,21 +85,6 @@ function stopGame() {
   return;
 }
 
-//Game variables 
-var canvas = document.querySelector("canvas");
-var ctx = canvas.getContext("2d");
-var x = canvas.width;
-var y = canvas.height;
-var dx = 5;
-var dy = 5;
-var frames = 0;
-var bg = new Background(ctx, "./images-folder/memphis-colorful.png", 2);
-var cat = new Cat(ctx, "./images-folder/main-cat.png");
-var randomObsArr = []; //array of obstacles that randomlly appear on the screen
-var obstaclesType = ["dog", "food", "dog2", "food"]; //possible types of obstacles that determine the image to display
-var score = 0;
-var lives = cat.lives;
-var miceArray = []
 
 //updating the canvas with all the functions
 function update() {
