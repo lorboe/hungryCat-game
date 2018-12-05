@@ -22,12 +22,6 @@ window.onload = function() {
   startInterval = setInterval(() =>{ 
     bg.update()
     bg.draw()
-   ctx.fillStyle = "black";
-   ctx.font = "40px Gloria Hallelujah";
-   ctx.fillText("Feed Me!", 310, 100);
-   ctx.fillStyle = "black";
-   ctx.font = "40px Gloria Hallelujah";
-   ctx.fillText("Meow! Meow!", 270, 400);
   },1000/60
   )
 
@@ -109,13 +103,11 @@ function update() {
 if (gameStopped) {
   return
 }
-  
   //console.log(randomObsArr.length)
-  bg.update();
-  cat.update();
-  //mouse.update();
+bg.update();
+cat.update();
   //obstacles appear on the screen and collision with the cat is checked
-  randomObsArr.forEach(function(obstacle) {
+randomObsArr.forEach(function(obstacle) {
     obstacle.update();
     if(cat.didCollide(obstacle)){
       obstacle.isTouched = true
@@ -137,15 +129,13 @@ if (gameStopped) {
   });
 
   //obstacles are removed from the array if they leave the canvas
-  randomObsArr.forEach((obj,index) => {
+randomObsArr.forEach((obj,index) => {
     if(obj.isTouched || obj.x < 0 - obj.width){
       randomObsArr.splice(index,1)
     }
+})
 
-  })
-
-
-//filling the obstacles and mice array
+//filling the obstacles and mice arrays
   frames++;
   if (frames % 80 === 0) {
     //console.log("Creating a new obstacle", frames);
@@ -156,15 +146,12 @@ if (gameStopped) {
   if (score >= 10){
     miceArray.push( 
       new Mouse(ctx,"./images-folder/white-mouse-pic.png")
-    );
-  }
-
+    );}
   }
   //updating the mice
   miceArray.forEach(function(mouse) {
     mouse.update()
   })
-
 }
 
 
@@ -179,20 +166,17 @@ function drawEverything() {
   miceArray.forEach(function(mouse) {
     mouse.draw();
   });
- 
-  
-
+ //drawing score
 ctx.font = "18px Gloria Hallelujah"
 ctx.fillStyle = "purple";
 ctx.fillText("Score: " + score, 700, 30)
-
+//drawing lives
 ctx.font = "18px Gloria Hallelujah"
 ctx.fillStyle = "red";
 ctx.fillText("Lives: " + lives, 700, 60)
-
 }
 
-//Moving the cat (main player)
+//game controls 
 $(document).keydown(function(event) {
   event.preventDefault();
   console.log("keydown", event.keyCode);
@@ -239,6 +223,7 @@ window.addEventListener("keydown", function(e) {
   }
 });
 
+//game sounds
 function playAudioHit(){
   var audio = new Audio("./audio/zapsplat_cartoon_voice_high_pitched_says_ouch_001_15792.mp3");
   audio.play();
